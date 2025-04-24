@@ -446,7 +446,32 @@ nav ul li a:hover {
         h2.fade-in {
             margin-top: 45px;
         }
-    </style>
+    
+.status-indicator {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #00ff88, #006633);
+  box-shadow: 0 0 8px #00ff88;
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 8px #00ff88;
+  }
+  50% {
+    transform: scale(1.2);
+    box-shadow: 0 0 12px #00ff88;
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 8px #00ff88;
+  }
+}
+
+</style>
 <header>
 <nav>
 <ul>
@@ -507,7 +532,7 @@ nav ul li a:hover {
 <div class="downloads-container">
 <div class="download-box fade-in">
 <img alt="Logo RL HACKERS" src="assets//tdm-logo.png" style="width: 100px; height: 100px; margin-bottom: 10px;"/>
-<h3 style="display: flex; align-items: center; gap: 8px;">CFBR 1.0 <span class="status-dot online" title="Online"></span></h3>
+<h3 style="display: flex; align-items: center; gap: 8px;">CFBR 1.0 <span class="status-indicator" title="Online"></span></h3>
 <p>Hacker CrossFire BR.</p>
 <a href=" ">BAIXAR</a>
 </div>
@@ -653,6 +678,31 @@ nav ul li a:hover {
       transform: translateY(100vh);
     }
   }
+
+.status-indicator {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #00ff88, #006633);
+  box-shadow: 0 0 8px #00ff88;
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 8px #00ff88;
+  }
+  50% {
+    transform: scale(1.2);
+    box-shadow: 0 0 12px #00ff88;
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 8px #00ff88;
+  }
+}
+
 </style>
 <script>
   function criarNeveInfinita() {
