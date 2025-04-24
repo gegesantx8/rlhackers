@@ -545,10 +545,6 @@ nav ul li a:hover {
 <iframe allowtransparency="true" frameborder="0" id="youtube-widget" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts" src="https://www.youtube.com/embed/EbeZYQU2F4E">
 </iframe>
 </div>
-
-
-
-
 </section></main><script>
         function showSection(sectionId) {
             document.querySelectorAll('main section').forEach(section => {
@@ -624,18 +620,15 @@ nav ul li a:hover {
         }
     </script>
 <body>
-
 <!-- Popup de Reflexão -->
 <div id="popupReflexao" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:2000; align-items:center; justify-content:center; font-family: 'Roboto', sans-serif;">
-  <div style="background:#1b1b1b; border:1px solid #ff0000; color:white; padding:30px; border-radius:10px; max-width:500px; text-align:center; animation:fadeIn 1s ease-out; position:relative;">
-    <h2 style="color:#ff0000; margin-bottom:15px;">RL - REFLEXÃO</h2>
-    <p id="mensagemReflexao" style="font-size:16px; line-height:1.5; font-weight: bold;"></p>
-    <button onclick="fecharPopup()" style="margin-top:20px; background:#6200d1; color:white; border:none; padding:10px 20px; border-radius:5px; cursor:pointer;">Fechar</button>
-  </div>
+<div style="background:#1b1b1b; border:1px solid #ff0000; color:white; padding:30px; border-radius:10px; max-width:500px; text-align:center; animation:fadeIn 1s ease-out; position:relative;">
+<h2 style="color:#ff0000; margin-bottom:15px;">RL - REFLEXÃO</h2>
+<p id="mensagemReflexao" style="font-size:16px; line-height:1.5; font-weight: bold;"></p>
+<button onclick="fecharPopup()" style="margin-top:20px; background:#6200d1; color:white; border:none; padding:10px 20px; border-radius:5px; cursor:pointer;">Fechar</button>
 </div>
-
+</div>
 <audio id="clickSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c379f92b77.mp3?filename=interface-click-124467.mp3"></audio>
-
 <script>
   const reflexoes = [
     "A persistência realiza o impossível.",
@@ -660,7 +653,6 @@ nav ul li a:hover {
     setTimeout(mostrarPopup, 1000);
   });
 </script>
-
 <style>
   .snowflake {
     position: fixed;
@@ -718,8 +710,6 @@ nav ul li a:hover {
   }
   window.addEventListener("load", criarNeveInfinita);
 </script>
-
-
 <audio id="clickSoundGlobal" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c379f92b77.mp3?filename=interface-click-124467.mp3"></audio>
 <script>
   window.addEventListener('DOMContentLoaded', () => {
@@ -732,9 +722,7 @@ nav ul li a:hover {
     }, true);
   });
 </script>
-
-
-<audio id="clickSoundGlobal" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c379f92b77.mp3?filename=interface-click-124467.mp3" preload="auto"></audio>
+<audio id="clickSoundGlobal" preload="auto" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c379f92b77.mp3?filename=interface-click-124467.mp3"></audio>
 <script>
   window.addEventListener('DOMContentLoaded', () => {
     const clickSound = document.getElementById("clickSoundGlobal");
@@ -747,11 +735,8 @@ nav ul li a:hover {
     }, true);
   });
 </script>
-
-
 <footer id="site-footer">
-  <p>© <span id="anoAtual"></span> RL HACKERS — Todos os direitos reservados.</p>
-  
+<p>© <span id="anoAtual"></span> RL HACKERS — Todos os direitos reservados.</p>
 </footer>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
@@ -759,5 +744,18 @@ nav ul li a:hover {
   });
 </script>
 
+<div style="position: absolute; width: 1px; height: 1px; overflow: hidden;">
+<iframe allow="autoplay; encrypted-media" allowfullscreen="" frameborder="0" height="1" id="ytplayer" src="https://www.youtube.com/embed/EaE7wJnC0eQ?autoplay=1&amp;mute=1&amp;playlist=EaE7wJnC0eQ&amp;loop=1" width="1"></iframe>
+</div>
+<script>
+  // Remove mute após o primeiro clique em qualquer parte do site
+  document.addEventListener("click", () => {
+    const iframe = document.getElementById("ytplayer");
+    const src = iframe.getAttribute("src");
+    if (src.includes("mute=1")) {
+      iframe.setAttribute("src", src.replace("mute=1", "mute=0"));
+    }
+  }, { once: true });
+</script>
 </body>
-</html>
+</head></html>
