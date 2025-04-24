@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin - RL HACKERS</title>
+  <style>
+    body {
+      background: #121212;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .login, .painel {
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 30px;
+      background: #1e1e1e;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(255,0,0,0.2);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 4px;
+    }
+    input, textarea {
+      background: #2a2a2a;
+      color: white;
+    }
+    button {
+      background: #ff0000;
+      color: white;
+      cursor: pointer;
+    }
+    .cheat-card {
+      background: #222;
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="login" id="login-box">
+  <h2>Login Admin</h2>
+  <input type="text" id="usuario" placeholder="Usuário">
+  <input type="password" id="senha" placeholder="Senha">
+  <button onclick="login()">Entrar</button>
+</div>
+
+<div class="painel" id="painel-box" style="display:none">
+  <h2>Publicar Novo Cheat</h2>
+  <input type="text" id="titulo" placeholder="Título do Cheat">
+  <input type="text" id="imagem" placeholder="URL da imagem">
+  <textarea id="descricao" placeholder="Descrição"></textarea>
+  <input type="text" id="link" placeholder="Link para download">
+  <button onclick="publicarCheat()">Publicar</button>
+
+  <h2>Cheats Publicados</h2>
+  <div id="lista-cheats"></div>
+</div>
+
+<script>
+const loginData = { usuario: "root", senha: "152002" };
+
+function login() {
+  const user = document.getElementById('usuario').value;
+  const pass = document.getElementById('senha').value;
+  if (user === loginData.usuario && pass === loginData.senha) {
+    document.getElementById('login-box').style.display = 'none';
+    document.getElementById('painel-box').style.display = 'block';
+    carregarCheats();
+  } else {
+    alert("Credenciais incorretas!");
+  }
+}
+
+function publicarCheat() {
+  const titulo = document.getElementById('titulo').value;
+  const imagem = document.getElementById('imagem').value;
+  const descricao = document.getElementById('descricao').value;
+  const link = document.getElementById('link').value;
+
+  const cheat = { titulo, imagem, descricao, link };
+  let lista = JSON.parse(localStorage.getItem("cheats") || "[]");
+  lista.push(cheat);
+  localStorage.setItem("cheats", JSON.stringify(lista));
+  carregarCheats();
+  alert("Cheat publicado com sucesso!");
+}
+
+function carregarCheats() {
+  const lista = JSON.parse(localStorage.getItem("cheats") || "[]");
+  const container = document.getElementById("lista-cheats");
+  container.innerHTML = "";
+
+  lista.forEach((c, i) => {
+    container.innerHTML += `
+      <div class="cheat-card">
+        <strong>${c.titulo}</strong>
+        <p>${c.descricao}</p>
+        <img src="${c.imagem}" alt="logo" style="max-width:100px"><br>
+        <a href="${c.link}" target="_blank">Baixar</a><br>
+        <button onclick="excluir(${i})">Excluir</button>
+      </div>
+    `;
+  });
+}
+
+function excluir(i) {
+  let lista = JSON.parse(localStorage.getItem("cheats") || "[]");
+  lista.splice(i, 1);
+  localStorage.setItem("cheats", JSON.stringify(lista));
+  carregarCheats();
+}
+</script>
+
+</body>
+</html>
