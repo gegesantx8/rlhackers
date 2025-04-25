@@ -777,19 +777,40 @@ nav ul li a:hover {
     document.getElementById("anoAtual").textContent = new Date().getFullYear();
   });
 </script>
+
 <div style="position: absolute; width: 1px; height: 1px; overflow: hidden;">
-<iframe allow="autoplay; encrypted-media" allowfullscreen="" frameborder="0" height="1" id="ytplayer" src="https://www.youtube.com/embed/EaE7wJnC0eQ?autoplay=1&amp;mute=1&amp;playlist=EaE7wJnC0eQ&amp;loop=1" width="1"></iframe>
+  <iframe 
+    allow="autoplay; encrypted-media" 
+    allowfullscreen="" 
+    frameborder="0" 
+    height="1" 
+    id="ytplayer"
+    width="1">
+  </iframe>
 </div>
+
 <script>
-  // Remove mute após o primeiro clique em qualquer parte do site
-  document.addEventListener("click", () => {
-    const iframe = document.getElementById("ytplayer");
-    const src = iframe.getAttribute("src");
-    if (src.includes("mute=1")) {
-      iframe.setAttribute("src", src.replace("mute=1", "mute=0"));
-    }
-  }, { once: true });
+const playlist = [
+  "EaE7wJnC0eQ",
+  "PzFAG0pcX4U",
+  "hq9o6X_x0jU",
+  "f02mOEt11OQ",
+  "3JWTaaS7LdU"
+];
+
+const randomVideo = playlist[Math.floor(Math.random() * playlist.length)];
+
+const iframe = document.getElementById("ytplayer");
+iframe.src = `https://www.youtube.com/embed/${randomVideo}?autoplay=1&mute=1&loop=1&playlist=${randomVideo}`;
+
+document.addEventListener("click", () => {
+  const src = iframe.getAttribute("src");
+  if (src.includes("mute=1")) {
+    iframe.setAttribute("src", src.replace("mute=1", "mute=0"));
+  }
+}, { once: true });
 </script>
+
 <script>
   // Desativa botão direito
   document.addEventListener('contextmenu', e => e.preventDefault());
