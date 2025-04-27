@@ -475,6 +475,22 @@ nav ul li a:hover {
       4px 4px 20px #990000;
   }
 }
+
+#visit-counter {
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #00ff88;
+    box-shadow: 0 0 10px #00ff88;
+    z-index: 1500;
+    font-family: 'Roboto', sans-serif;
+}
+
 </style>
 <header>
 <nav>
@@ -486,6 +502,7 @@ nav ul li a:hover {
 <li></li>
 </ul>
 <div id="team-logo-container">
+<div id="visit-counter">Visitas: 0</div>
 <img alt="RL HACKERS" id="team-logo" src="assets//team-logo.png"/>
 </div>
 </div>
@@ -811,5 +828,22 @@ document.addEventListener("click", () => {
     }
   });
 </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const visitCounter = document.getElementById('visit-counter');
+    let visits = localStorage.getItem('site_visits');
+
+    if (visits) {
+      visits = parseInt(visits) + 1;
+    } else {
+      visits = 1;
+    }
+
+    localStorage.setItem('site_visits', visits);
+    visitCounter.textContent = `Visitas: ${visits.toLocaleString()}`;
+  });
+</script>
+
 </body>
 </head></html>
