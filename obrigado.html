@@ -53,5 +53,23 @@
   <h1>Obrigado pela sua solicitação!</h1>
   <p>Recebemos sua mensagem com sucesso. Entraremos em contato em breve.</p>
   <a href="index.html">Voltar para o site</a>
+
+<script>
+// Bloquear botão direito
+document.addEventListener('contextmenu', event => event.preventDefault());
+
+// Bloquear teclas F12, Ctrl+U, Ctrl+Shift+I/J
+document.addEventListener('keydown', function (e) {
+    if (e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J")) ||
+        (e.ctrlKey && e.key === "U")) {
+        e.preventDefault();
+    }
+});
+
+// Bloquear seleção de texto
+document.addEventListener('selectstart', event => event.preventDefault());
+</script>
+
 </body>
 </html>
