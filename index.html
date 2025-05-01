@@ -371,5 +371,81 @@ document.addEventListener('contextmenu', function (e) {
 });
 </script>
 
+
+<!-- Contador de Visitantes Online -->
+<div id="contador-online" style="position:fixed;bottom:20px;left:20px;background:#111;
+color:#fff;padding:8px 16px;border:2px solid red;border-radius:8px;
+font-family:'Segoe UI',sans-serif;font-size:14px;z-index:9999;box-shadow:0 0 10px red;">
+  <span id="contador">0 online</span>
+</div>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getDatabase, ref, onValue, set, onDisconnect, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDj3OR986YShCmra2QEt1-oPENF-9HIuPc",
+    authDomain: "rlhackers-be14a.firebaseapp.com",
+    projectId: "rlhackers-be14a",
+    storageBucket: "rlhackers-be14a.appspot.com",
+    messagingSenderId: "639064019955",
+    appId: "1:639064019955:web:c90a9db4093c243f1f886",
+    measurementId: "G-CHFT7XPB6Q",
+    databaseURL: "https://rlhackers-be14a-default-rtdb.firebaseio.com"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+
+  const userRef = ref(db, "visitors/" + Math.random().toString(36).substring(2));
+  set(userRef, { online: true, timestamp: serverTimestamp() });
+  onDisconnect(userRef).remove();
+
+  const countRef = ref(db, "visitors");
+  onValue(countRef, (snapshot) => {
+    const data = snapshot.val();
+    const count = data ? Object.keys(data).length : 0;
+    document.getElementById("contador").innerText = count + " online";
+  });
+</script>
+
+
+<!-- Contador de Visitantes Online -->
+<div id="contador-online" style="position:fixed;bottom:20px;left:20px;background:#111;
+color:#fff;padding:8px 16px;border:2px solid red;border-radius:8px;
+font-family:'Segoe UI',sans-serif;font-size:14px;z-index:9999;box-shadow:0 0 10px red;">
+  <span id="contador">0 online</span>
+</div>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getDatabase, ref, onValue, set, onDisconnect, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDj3OR986YShCmra2QEt1-oPENF-9HIuPc",
+    authDomain: "rlhackers-be14a.firebaseapp.com",
+    projectId: "rlhackers-be14a",
+    storageBucket: "rlhackers-be14a.appspot.com",
+    messagingSenderId: "639064019955",
+    appId: "1:639064019955:web:c90a9db4093c243f1f886",
+    measurementId: "G-CHFT7XPB6Q",
+    databaseURL: "https://rlhackers-be14a-default-rtdb.firebaseio.com"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+
+  const userRef = ref(db, "visitors/" + Math.random().toString(36).substring(2));
+  set(userRef, { online: true, timestamp: serverTimestamp() });
+  onDisconnect(userRef).remove();
+
+  const countRef = ref(db, "visitors");
+  onValue(countRef, (snapshot) => {
+    const data = snapshot.val();
+    const count = data ? Object.keys(data).length : 0;
+    document.getElementById("contador").innerText = count + " online";
+  });
+</script>
+
 </body>
 </html>
