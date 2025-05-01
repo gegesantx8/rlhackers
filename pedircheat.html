@@ -1,90 +1,73 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8"/>
-<title>Pedir Cheat - RL Hackers</title>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron&amp;display=swap" rel="stylesheet"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<style>
-    * {
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pedir Cheat - RL Hackers</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap">
+  <style>
+    body {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background-color: #0a0a0a;
-      color: #fff;
+      background: black;
       font-family: 'Orbitron', sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      flex-direction: column;
+      color: white;
     }
-
     h1 {
+      text-align: center;
+      color: #ff1a1a;
       font-size: 32px;
-      margin-bottom: 30px;
-      color: white;
-      text-shadow: 0 0 5px red;
+      margin-top: 80px;
+      text-shadow: 0 0 8px #ff1a1a;
     }
-
-    form {
-      background-color: #111;
-      border: 2px solid red;
+    .form-container {
+      max-width: 500px;
+      margin: 20px auto;
       padding: 30px;
-      border-radius: 8px;
-      width: 90%;
-      max-width: 400px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
+      border: 2px solid #ff1a1a;
+      border-radius: 6px;
     }
-
     input, textarea {
-      background-color: #1c1c1c;
-      color: #fff;
-      border: 1px solid #444;
+      width: 100%;
       padding: 12px;
-      border-radius: 5px;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 14px;
-    }
-
-    input::placeholder, textarea::placeholder {
-      color: #aaa;
-    }
-
-    button {
-      background-color: red;
-      color: white;
+      margin-bottom: 15px;
       border: none;
-      padding: 12px;
+      border-radius: 4px;
+      background: #111;
+      color: white;
+      font-size: 16px;
+    }
+    input::placeholder, textarea::placeholder {
+      color: #888;
+    }
+    button {
+      width: 100%;
+      padding: 14px;
+      background: #ff1a1a;
+      border: none;
+      border-radius: 4px;
+      color: white;
       font-size: 16px;
       font-weight: bold;
       cursor: pointer;
-      transition: background 0.3s;
-      border-radius: 5px;
+      transition: background 0.3s ease;
     }
-
     button:hover {
-      background-color: #b30000;
+      background: #e60000;
     }
-
   </style>
 </head>
 <body>
-<h1>Pedir Cheat</h1>
-<form action="https://formsubmit.co/rlhackers.2025@gmail.com" method="POST">
-<input name="nome" placeholder="Seu nome" required="" type="text"/>
-<textarea name="mensagem" placeholder="Qual cheat você deseja? Escreva aqui..." required="" rows="5"></textarea>
-<!-- Configurações ocultas -->
-<input name="_captcha" type="hidden" value="false"/>
-<input name="_next" type="hidden" value="https://seudominio.com/obrigado.html"/>
-<button type="submit">Enviar Pedido</button>
-<input name="_next" type="hidden" value="https://rlhackers.org/obrigado.html"/><input name="_honey" style="display:none" type="text"/><input name="_captcha" type="hidden" value="false"/></form>
+  <h1>Pedir Cheat</h1>
+  <div class="form-container">
+    <form action="https://formsubmit.co/rlhackers.2025@gmail.com" method="POST">
+      <input type="text" name="name" placeholder="Seu nome" required>
+      <input type="email" name="email" placeholder="Seu e-mail para contato" required>
+      <textarea name="mensagem" rows="6" placeholder="Qual cheat você deseja? Escreva aqui..." required></textarea>
+      <input type="hidden" name="_next" value="https://rlhackers.org/obrigado.html">
+      <input type="hidden" name="_captcha" value="false">
+      <button type="submit">Enviar Pedido</button>
+    </form>
+  </div>
 </body>
 </html>
