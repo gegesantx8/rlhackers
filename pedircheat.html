@@ -87,5 +87,25 @@ document.addEventListener('keydown', function (e) {
 document.addEventListener('selectstart', event => event.preventDefault());
 </script>
 
+
+<script>
+// Bloqueia Ctrl+U, F12, Ctrl+Shift+I, botão direito e outras tentativas
+document.addEventListener('keydown', function (e) {
+  if (
+    (e.ctrlKey && e.key.toLowerCase() === 'u') || // Ctrl+U
+    (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'i') || // Ctrl+Shift+I
+    (e.key === 'F12') // F12
+  ) {
+    e.preventDefault();
+    alert("Acesso ao código-fonte bloqueado.");
+  }
+});
+
+document.addEventListener('contextmenu', function (e) {
+  e.preventDefault();
+  alert("Clique direito desativado.");
+});
+</script>
+
 </body>
 </html>
