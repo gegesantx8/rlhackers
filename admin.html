@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat Admin - RL HACKERS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(to right, #0a0a0a, #1a1a1a);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    h1 {
+      color: red;
+      text-shadow: 0 0 10px red;
+      margin-bottom: 15px;
+    }
+    #chat-box {
+      width: 100%;
+      max-width: 700px;
+      height: 400px;
+      background: rgba(17, 17, 17, 0.8);
+      border: 2px solid red;
+      border-radius: 10px;
+      padding: 10px;
+      overflow-y: scroll;
+      box-shadow: 0 0 15px red;
+      margin-bottom: 10px;
+      backdrop-filter: blur(6px);
+    }
+    .msg {
+      background: rgba(255, 255, 255, 0.06);
+      padding: 8px 12px;
+      border-left: 3px solid red;
+      border-radius: 6px;
+      margin: 5px 0;
+      position: relative;
+    }
+    .msg img.logo {
+      width: 20px;
+      vertical-align: middle;
+      margin-right: 5px;
+    }
+    .delete-btn {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      background: red;
+      border: none;
+      color: white;
+      border-radius: 50%;
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+      font-size: 12px;
+    }
+    .midia {
+      max-width: 100%;
+      margin-top: 5px;
+    }
+    textarea, input[type="file"] {
+      width: 100%;
+      padding: 8px;
+      background: #111;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-family: inherit;
+    }
+    textarea {
+      height: 60px;
+      resize: none;
+    }
+    button {
+      padding: 10px;
+      margin-top: 10px;
+      background: red;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 10px red;
+    }
+  </style>
+</head>
+<body>
+  <h1>Painel Admin - RL HACKERS</h1>
+  <div id="chat-box"></div>
+
+  <textarea id="mensagem" placeholder="Digite sua resposta..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();enviar()}"></textarea>
+  <input type="file" id="arquivo" accept="image/*,video/*">
+  <button onclick="enviar()">Enviar</button>
+  <button onclick="limparTudo()">🧹 Limpar Chat</button>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getDatabase, ref, push, onChildAdded, remove, child, get, set } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDj3OR986YShCmra2QEt1-oPENF-9HIuPc",
+      authDomain: "rlhackers-be14a.firebaseapp.com",
+      databaseURL: "https://rlhackers-be14a-default-rtdb.firebaseio.com",
+      projectId: "rlhackers-be14a",
+      storageBucket: "rlhackers-be14a.appspot.com",
+      messagingSenderId: "639064019955",
+      appId: "1:639064019955:web:c90a9db4093c243f1f886"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const chatRef = ref(db, "chat");
+
+    const chatBox = document.getElementById("chat-box");
+
+    onChildAdded(chatRef, (data) => {
+      const { nome, mensagem, midia } = data.val();
+      const div = document.createElement("div");
+      div.classList.add("msg");
+      let nomeExibido = nome === "Admin" ? `<img class="logo" src="team-logo.png"><strong>Admin:</strong>` : `<strong>${nome}:</strong>`;
+    div.innerHTML = `${nomeExibido} ${mensagem}
+        <button class="delete-btn" onclick="apagar('${data.key}')">x</button>`;
+      if (midia) {
+        const isVideo = midia.startsWith("data:video");
+        const mediaEl = document.createElement(isVideo ? "video" : "img");
+        mediaEl.src = midia;
+        mediaEl.className = "midia";
+        if (isVideo) mediaEl.controls = true;
+        div.appendChild(mediaEl);
+      }
+      chatBox.appendChild(div);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    });
+
+    window.enviar = () => {
+      const mensagem = document.getElementById("mensagem").value.trim();
+      const arquivo = document.getElementById("arquivo").files[0];
+      if (!mensagem && !arquivo) return;
+
+      if (arquivo) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          push(chatRef, {
+            nome: "Admin",
+            mensagem,
+            midia: reader.result,
+            tipo: "admin"
+          });
+        };
+        reader.readAsDataURL(arquivo);
+      } else {
+        push(chatRef, {
+          nome: "Admin",
+          mensagem,
+          tipo: "admin"
+        });
+      }
+
+      document.getElementById("mensagem").value = "";
+      document.getElementById("arquivo").value = "";
+    };
+
+    window.apagar = (id) => {
+      if (confirm("Deseja apagar esta mensagem?")) {
+        remove(child(chatRef, id));
+        location.reload();
+      }
+    };
+
+    window.limparTudo = () => {
+      if (confirm("Tem certeza que deseja apagar TODO o chat?")) {
+        set(chatRef, null);
+        location.reload();
+      }
+    };
+  </script>
+</body>
+</html>
