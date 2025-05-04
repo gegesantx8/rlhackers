@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chat de Suporte</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(to right, #0a0a0a, #1a1a1a);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    h1 {
+      color: red;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px red;
+    }
+    #chat-box {
+      width: 100%;
+      max-width: 600px;
+      height: 400px;
+      background: rgba(17, 17, 17, 0.8);
+      border: 2px solid red;
+      border-radius: 10px;
+      padding: 10px;
+      overflow-y: scroll;
+      margin-bottom: 10px;
+      box-shadow: 0 0 15px red;
+      backdrop-filter: blur(4px);
+    }
+    .msg {
+      margin: 5px 0;
+      padding: 6px 10px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border-left: 3px solid red;
+    }
+    .admin {
+      background: rgba(255, 0, 0, 0.15);
+    }
+    #input-area {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 600px;
+      width: 100%;
+    }
+    input, textarea {
+      padding: 8px;
+      border: none;
+      border-radius: 6px;
+      font-family: inherit;
+      background: #111;
+      color: white;
+    }
+    textarea { height: 60px; }
+    button {
+      padding: 10px;
+      background: red;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 0 10px red;
+    }
+  </style>
+</head>
+<body>
+  <h1>Chat de Suporte</h1>
+  <div id="chat-box"></div>
+
+  <div id="input-area">
+    <input type="text" id="nome" placeholder="Seu nome" />
+    <textarea id="mensagem" placeholder="Digite sua mensagem" onkeydown="if(event.key === 'Enter' && !event.shiftKey){event.preventDefault(); enviar();}"></textarea>
+<input type="file" id="arquivo" accept="image/*,video/*" style="color:white;">
+    <button onclick="enviar()">Enviar</button>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getDatabase, ref, push, onChildAdded, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDj3OR986YShCmra2QEt1-oPENF-9HIuPc",
+      authDomain: "rlhackers-be14a.firebaseapp.com",
+      projectId: "rlhackers-be14a",
+      storageBucket: "rlhackers-be14a.appspot.com",
+      messagingSenderId: "639064019955",
+      appId: "1:639064019955:web:c90a9db4093c243f1f886",
+      measurementId: "G-CHFT7XPB6Q",
+      databaseURL: "https://rlhackers-be14a-default-rtdb.firebaseio.com"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const chatRef = ref(db, "chat");
+
+    const chatBox = document.getElementById("chat-box");
+
+    onChildAdded(chatRef, (data) => {
+      const { nome, mensagem, tipo } = data.val();
+      const msgDiv = document.createElement("div");
+      msgDiv.classList.add("msg", tipo === "admin" ? "admin" : "user");
+      if (tipo === "admin") {
+        msgDiv.innerHTML = `<img src="team-logo.png" style="width:18px;margin-right:6px;vertical-align:middle;"><strong>${nome}:</strong> ${mensagem}`;
+      } else {
+        msgDiv.innerHTML = `<strong>${nome}:</strong> ${mensagem}`;
+      }
+      if (data.val().midia) {
+        const media = document.createElement(data.val().midia.includes("video") ? "video" : "img");
+        media.src = data.val().midia;
+        media.style.maxWidth = "100%";
+        if (data.val().midia.includes("video")) {
+          media.controls = true;
+        }
+        msgDiv.appendChild(document.createElement("br"));
+        msgDiv.appendChild(media);
+      }
+      chatBox.appendChild(msgDiv);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    });
+
+    window.enviar = () => {
+      const nome = document.getElementById("nome").value.trim();
+      const mensagemInput = document.getElementById("mensagem").value.trim();
+      const arquivoInput = document.getElementById("arquivo").files[0];
+
+      if (!nome || !mensagemInput) return;
+
+      if (arquivoInput) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          push(chatRef, {
+            nome,
+            mensagem: mensagemInput,
+            midia: reader.result,
+            tipo: nome.toLowerCase() === "admin" ? "admin" : "user",
+            timestamp: serverTimestamp()
+          });
+        };
+        reader.readAsDataURL(arquivoInput);
+      } else {
+        push(chatRef, {
+          nome,
+          mensagem: mensagemInput,
+          tipo: nome.toLowerCase() === "admin" ? "admin" : "user",
+          timestamp: serverTimestamp()
+        });
+      }
+
+      document.getElementById("mensagem").value = "";
+    };
+  </script>
+</body>
+</html>
