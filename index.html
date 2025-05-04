@@ -144,5 +144,43 @@
 <a href="help.html">Ajuda/Mail</a>
 <a href="chat.html">Chat/Suportt</a>
 </div>
+
+<!-- Player de Música Oculto -->
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const iframe = document.createElement('iframe');
+    iframe.src = "https://www.youtube.com/embed/PP2Uvesx4ls?autoplay=1&playlist=PP2Uvesx4ls&loop=1";
+    iframe.id = "player-musica";
+    iframe.width = "1";
+    iframe.height = "1";
+    iframe.frameBorder = "0";
+    iframe.allow = "autoplay";
+    iframe.allowFullscreen = true;
+    iframe.style.position = "absolute";
+    iframe.style.left = "-9999px";
+    document.body.appendChild(iframe);
+  });
+</script>
+
+<!-- Proteções adicionais -->
+<script>
+  // Bloquear botão direito
+  document.addEventListener('contextmenu', event => event.preventDefault());
+
+  // Bloquear teclas F12, Ctrl+U, Ctrl+Shift+I/J
+  document.addEventListener('keydown', function (e) {
+    if (
+      e.key === "F12" ||
+      (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J")) ||
+      (e.ctrlKey && e.key === "U")
+    ) {
+      e.preventDefault();
+      alert("Acesso ao código-fonte bloqueado.");
+    }
+  });
+
+  // Bloquear seleção de texto
+  document.addEventListener('selectstart', event => event.preventDefault());
+</script>
 </body>
 </html>
