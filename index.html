@@ -319,8 +319,7 @@
   © 2025 RL Hackers - Todos os direitos reservados.
 </footer>
 <script>
-function tocarMusica() {
-  if (!document.getElementById('player-musica')) {
+  window.addEventListener("DOMContentLoaded", () => {
     const iframe = document.createElement('iframe');
     iframe.src = "https://www.youtube.com/embed/PP2Uvesx4ls?autoplay=1&playlist=PP2Uvesx4ls&loop=1";
     iframe.id = "player-musica";
@@ -332,9 +331,8 @@ function tocarMusica() {
     iframe.style.position = "absolute";
     iframe.style.left = "-9999px";
     document.body.appendChild(iframe);
-  }
-}
-</script>
+  });
+  </script>  
 <script>
 // Bloquear botão direito
 document.addEventListener('contextmenu', event => event.preventDefault());
