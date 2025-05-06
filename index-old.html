@@ -1,0 +1,426 @@
+
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RL ~ HACKERS</title>
+<link href="assets/team-icon.png" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&amp;display=swap" rel="stylesheet"/>
+<style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(to right, #0a0a0a, #1a1a1a);
+      color: white;
+      min-height: 100vh;
+    }
+    header {
+      padding: 20px;
+      background: #0f0f0f;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid red;
+    }
+    header img {
+      height: 60px;
+    }
+    nav a {
+      color: white;
+      margin: 0 20px;
+      text-decoration: none;
+      font-weight: bold;
+      position: relative;
+    }
+    nav a:hover {
+      color: red;
+    }
+    .main-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 60px 5%;
+      flex-wrap: wrap;
+    }
+    .text-section {
+      max-width: 550px;
+    }
+    .text-section h1 {
+      font-size: 40px;
+      margin-bottom: 20px;
+      color: #ff0000;
+    }
+    .text-section p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    .text-section .discord {
+      display: inline-block;
+      padding: 12px 25px;
+      background: red;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 10px red;
+    }
+    .image-section {
+      max-width: 520px;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 0 30px red;
+      animation: float 4s ease-in-out infinite;
+    }
+    .image-section img {
+      width: 100%;
+      border-radius: 24px;
+      display: block;
+    }
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+    .buttons-fixed {
+      position: fixed;
+      right: 20px;
+      top: 200px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 1000;
+    }
+    .buttons-fixed a {
+      padding: 10px 15px;
+      background: red;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      box-shadow: 0 0 10px red;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+      margin-top: 50px;
+      font-size: 14px;
+    }
+  
+  .faq-section {
+    background-color: #0d0d0d;
+    padding: 60px 5%;
+  }
+  .faq-section h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+    font-weight: bold;
+    color: white;
+  }
+  .faq-box {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .faq-item {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #420000;
+    padding-bottom: 10px;
+  }
+  .faq-question {
+    width: 100%;
+    background: none;
+    color: white;
+    font-size: 20px;
+    text-align: left;
+    border: none;
+    padding: 15px 10px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    border-left: 3px solid red;
+    transition: background 0.3s;
+  }
+  .faq-question:hover {
+    background-color: #1a1a1a;
+  }
+  .faq-answer {
+    display: none;
+    padding: 10px;
+    font-size: 15px;
+    color: #ccc;
+  }
+  .faq-question span {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    padding-left: 10px;
+  }
+  .faq-question.active span {
+    color: red;
+  }
+  .faq-question.active + .faq-answer {
+    display: block;
+  }
+</style>
+</head>
+<body>
+<header>
+<img alt="RL HACKERS" src="assets/team-logo.png"/>
+<nav>
+<a href="#">Home</a>
+<a href="downloads.html">Downloads</a>
+</nav>
+</header>
+<div class="main-content">
+<div class="text-section">
+<h1>Bem-vindo ao RL HACKERS</h1>
+<p>- Criado por RL HACKERS!<br/><br/>- Use apenas nossos canais oficiais para baixar conteúdos.</p>
+<a class="discord" href="https://www.youtube.com/@rl.hackers" target="_blank">Junte-se a nós</a>
+</div>
+<div class="image-section">
+<img alt="Banner RL HACKERS" src="assets/imagem1.png"/>
+</div>
+</div>
+<div class="buttons-fixed">
+<a href="help.html">Ajuda/Mail</a>
+<a href="chat.html">Chat/Suportt</a>
+</div>
+<section class="faq-section" id="faq"><div class="faq-box">
+<h2 style="text-align:center; font-size:32px; margin-bottom:40px; font-weight:bold;">FAQs</h2>
+<div class="faq-item">
+<button class="faq-question">Cheat não funciona? <span>+</span></button>
+<div class="faq-answer">Verifique se seu antivírus está desativado, execute como administrador e siga o tutorial corretamente.</div>
+</div>
+<div class="faq-item">
+<button class="faq-question">Como se manter atualizado? <span>+</span></button>
+<div class="faq-answer">Siga nosso canal do YouTube e ative o sininho para receber notificações de atualizações.</div>
+</div>
+<div class="faq-item">
+<button class="faq-question">Qual é a diferença entre Cheat gratuito e Cheat pago? <span>+</span></button>
+<div class="faq-answer">O cheat pago possui mais funcionalidades, atualizações frequentes e suporte dedicado.</div>
+</div>
+</div></section>
+<style>
+  .faq-item {{
+    margin-bottom: 20px;
+    border-bottom: 1px solid red;
+  }}
+  .faq-question {{
+    width: 100%;
+    background: none;
+    color: white;
+    font-size: 18px;
+    text-align: left;
+    border: none;
+    padding: 15px 10px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    border-left: 3px solid red;
+  }}
+  .faq-question:hover {{
+    background-color: #1a1a1a;
+  }}
+  .faq-answer {{
+    display: none;
+    padding: 10px;
+    font-size: 15px;
+    color: #ccc;
+    animation: fadeIn 0.5s ease-in-out;
+  }}
+  .faq-question.active + .faq-answer {{
+    display: block;
+  }}
+
+  .faq-section {
+    background-color: #0d0d0d;
+    padding: 60px 5%;
+  }
+  .faq-section h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+    font-weight: bold;
+    color: white;
+  }
+  .faq-box {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .faq-item {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #420000;
+    padding-bottom: 10px;
+  }
+  .faq-question {
+    width: 100%;
+    background: none;
+    color: white;
+    font-size: 20px;
+    text-align: left;
+    border: none;
+    padding: 15px 10px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    border-left: 3px solid red;
+    transition: background 0.3s;
+  }
+  .faq-question:hover {
+    background-color: #1a1a1a;
+  }
+  .faq-answer {
+    display: none;
+    padding: 10px;
+    font-size: 15px;
+    color: #ccc;
+  }
+  .faq-question span {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    padding-left: 10px;
+  }
+  .faq-question.active span {
+    color: red;
+  }
+  .faq-question.active + .faq-answer {
+    display: block;
+  }
+</style>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {{
+    const questions = document.querySelectorAll(".faq-question");
+    questions.forEach(q => {{
+      q.addEventListener("click", () => {{
+        q.classList.toggle("active");
+        const answer = q.nextElementSibling;
+        answer.style.display = answer.style.display === "block" ? "none" : "block";
+        q.querySelector("span").textContent = answer.style.display === "block" ? "–" : "+";
+      }});
+    }});
+  }});
+</script>
+<footer style="margin-top: 80px; text-align: center; padding: 20px; background: #0d0d0d; font-size: 14px; color: #aaa;">
+  © 2025 RL Hackers - Todos os direitos reservados.
+</footer>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const iframe = document.createElement('iframe');
+    iframe.src = "https://www.youtube.com/embed/PP2Uvesx4ls?autoplay=1&playlist=PP2Uvesx4ls&loop=1";
+    iframe.id = "player-musica";
+    iframe.width = "1";
+    iframe.height = "1";
+    iframe.frameBorder = "0";
+    iframe.allow = "autoplay";
+    iframe.allowFullscreen = true;
+    iframe.style.position = "absolute";
+    iframe.style.left = "-9999px";
+    document.body.appendChild(iframe);
+  });
+  </script>  
+<script>
+// Bloquear botão direito
+document.addEventListener('contextmenu', event => event.preventDefault());
+
+// Bloquear teclas F12, Ctrl+U, Ctrl+Shift+I/J
+document.addEventListener('keydown', function (e) {
+    if (e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J")) ||
+        (e.ctrlKey && e.key === "U")) {
+        e.preventDefault();
+    }
+});
+
+// Bloquear seleção de texto
+document.addEventListener('selectstart', event => event.preventDefault());
+</script>
+
+
+<script>
+// Bloqueia Ctrl+U, F12, Ctrl+Shift+I, botão direito e outras tentativas
+document.addEventListener('keydown', function (e) {
+  if (
+    (e.ctrlKey && e.key.toLowerCase() === 'u') || // Ctrl+U
+    (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'i') || // Ctrl+Shift+I
+    (e.key === 'F12') // F12
+  ) {
+    e.preventDefault();
+    alert("Acesso ao código-fonte bloqueado.");
+  }
+});
+
+document.addEventListener('contextmenu', function (e) {
+  e.preventDefault();
+  alert("Clique direito desativado.");
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Contador de Visitantes Online -->
+<div id="contador-online" style="position:fixed;bottom:20px;left:20px;background:#111;
+color:#fff;padding:8px 16px;border:2px solid red;border-radius:8px;
+font-family:'Segoe UI',sans-serif;font-size:14px;z-index:9999;box-shadow:0 0 10px red;">
+  <span id="contador">0 online</span>
+</div>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getDatabase, ref, onValue, set, onDisconnect, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+  console.log("✅ Firebase script carregado!");
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDj3OR986YShCmra2QEt1-oPENF-9HIuPc",
+    authDomain: "rlhackers-be14a.firebaseapp.com",
+    projectId: "rlhackers-be14a",
+    storageBucket: "rlhackers-be14a.appspot.com",
+    messagingSenderId: "639064019955",
+    appId: "1:639064019955:web:c90a9db4093c243f1f886",
+    measurementId: "G-CHFT7XPB6Q",
+    databaseURL: "https://rlhackers-be14a-default-rtdb.firebaseio.com"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+
+  const userRef = ref(db, "visitors/" + Math.random().toString(36).substring(2));
+  set(userRef, { online: true, timestamp: serverTimestamp() }).then(() => {
+    console.log("✅ Visitante registrado no Firebase");
+  });
+
+  onDisconnect(userRef).remove();
+
+  const countRef = ref(db, "visitors");
+  onValue(countRef, (snapshot) => {
+    const data = snapshot.val();
+    const count = data ? Object.keys(data).length : 0;
+    console.log("👀 Visitantes online:", count);
+    document.getElementById("contador").innerText = count + " online";
+  });
+</script>
+
+</body>
+</html>
