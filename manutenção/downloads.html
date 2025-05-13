@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RL HACKERS - Manutenção</title>
+  <link rel="icon" href="favicon.png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #0a0a0a;
+      color: #ffffff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: url('bg-dark.jpg'); /* opcional */
+      background-size: cover;
+      background-position: center;
+      flex-direction: column;
+      text-align: center;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      color: #ff0000;
+    }
+    p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+    }
+    .loader {
+      border: 6px solid #444;
+      border-top: 6px solid #ff0000;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    footer {
+      position: absolute;
+      bottom: 10px;
+      font-size: 0.9em;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <div class="loader"></div>
+  <h1>RL HACKERS</h1>
+  <p>Estamos passando por uma manutenção técnica.<br>Volte em breve!</p>
+  <footer>&copy; 2025 RL HACKERS - Todos os direitos reservados.</footer>
+</body>
+</html>
